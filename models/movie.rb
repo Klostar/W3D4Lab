@@ -19,4 +19,11 @@ def save()
   @id = movie['id'].to_i
 end
 
+def self.all()
+  sql = "SELECT * FROM movies"
+  values =[]
+  movies = SqlRunner.run(sql,values)
+  result = movies.map{|movie| Movie.new(movie)}
+end
+
 end
