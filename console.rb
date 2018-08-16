@@ -28,6 +28,9 @@ casting2 = Casting.new({'star_id' => star2.id, 'movie_id' => movie2.id, 'fee' =>
 casting2.save()
 casting3 = Casting.new({'star_id' => star3.id, 'movie_id' => movie3.id, 'fee' => 2000000})
 casting3.save()
+casting4 = Casting.new({'star_id' => star1.id, 'movie_id' => movie3.id, 'fee' => 3000})
+casting4.save()
+
 
 binding.pry
 nil

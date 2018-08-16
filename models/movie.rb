@@ -30,6 +30,12 @@ def star()
   return result
 end
 
+def update()
+  sql = "UPDATE movies SET title= $1, genre = $2 WHERE id = $3 "
+  values =[@title,@genre,@id]
+  SqlRunner.run(sql,values)
+end
+
 def self.all()
   sql = "SELECT * FROM movies"
   values =[]
