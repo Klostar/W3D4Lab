@@ -22,12 +22,28 @@ class Star
     @id = star['id'].to_i
   end
 
+  def movie()
+    sql = "SELECT movies.*
+    FROM movies
+    INNER JOIN castings
+    ON castings.movie_id = movies.id
+    WHERE castings.star_id = $1"
+    values =[@id]
+    movies = SqlRunner.run(sql,values)
+    result = movies.map{|movie|Movie.new(movie)}
+end
+
 def self.all()
   sql = "SELECT * FROM stars"
     values =[]
     stars = SqlRunner.run(sql,values)
     result = stars.map{|star| Star.new(star)}
     return result
+end
+
+def self.delete_all()
+  sql = "DELETE FROM stars"
+  SqlRunner.run(sql)
 end
 
 end
